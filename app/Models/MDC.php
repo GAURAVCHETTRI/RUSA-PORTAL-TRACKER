@@ -11,7 +11,7 @@ class MDC extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 
+        'name','college_name', 'college_location', 'college_district', 'college_address', 'funds_allocated', 'funds_received', 'work_progress',
     ];
     protected $table = 'm_d_c_s';
 }

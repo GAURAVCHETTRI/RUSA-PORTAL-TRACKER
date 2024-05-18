@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMDCTable extends Migration
+class CreateMDCSTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMDCTable extends Migration
      */
     public function up()
     {
-        Schema::create('mdc', function (Blueprint $table) {
+        Schema::create('m_d_c_s', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->softDeletes();
@@ -28,6 +28,6 @@ class CreateMDCTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mdc');
+        Schema::dropIfExists('m_d_c_s');
     }
 }

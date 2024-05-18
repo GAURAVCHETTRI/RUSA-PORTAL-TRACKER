@@ -29,6 +29,7 @@ class HomeController extends Controller
         // Preparing count for Dashboard Array
         $users = User::count();
 
+
         // Preparing Dashboard card Array.
         $dashboard_cards = [
             ['Users', $users, Route('admin.users.index'),'fa fa-dashboard'],
@@ -37,3 +38,6 @@ class HomeController extends Controller
         return kview('home',compact('dashboard_cards'));
     }
 }
+
+
+

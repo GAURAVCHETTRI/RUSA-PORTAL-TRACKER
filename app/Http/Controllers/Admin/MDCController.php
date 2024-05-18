@@ -40,10 +40,20 @@ class MDCController extends Controller {
   }
   public function store(AddRequest $request) {
     try {
-      $data = [
-        'name' => $request->name,
-      ];
+      $data = $request->only([
+         'name','college_name', 'college_location', 'college_district', 'college_address', 'funds_allocated', 'funds_received', 'work_progress',
+    ]);
+      $request->validate([
+        'college_name' => 'required|string',
+        'college_location' => 'required|string',
+        'college_district' => 'required|string',
+        'college_address' => 'required|string',
+        'funds_allocated' => 'required|numeric',
+        'funds_received' => 'required|numeric',
+        'work_progress' => 'required|numeric|min:0|max:100',
+      ]);
       $table = Table::create($data);
+
 
       return redirect()->to(route('admin.' . $this->handle_name_plural . '.index'))->with('success', 'New ' . ucfirst($this->handle_name) . ' has been added.');
     } catch (Exception $e) {
@@ -53,9 +63,18 @@ class MDCController extends Controller {
   }
   public function update(UpdateRequest $request) {
     try {
-      $data = [
-        'name' => $request->name,
-      ];
+      $data =$request->only([
+         'name','college_name', 'college_location', 'college_district', 'college_address', 'funds_allocated', 'funds_received', 'work_progress',
+       ]);
+        $request->validate([
+        'college_name' => 'required|string',
+        'college_location' => 'required|string',
+        'college_district' => 'required|string',
+        'college_address' => 'required|string',
+        'funds_allocated' => 'required|numeric',
+        'funds_received' => 'required|numeric',
+        'work_progress' => 'required|numeric|min:0|max:100',
+      ]);
       $where = [
         'id' => $request->id
       ];
