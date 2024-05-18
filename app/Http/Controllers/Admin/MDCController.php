@@ -13,6 +13,10 @@ class MDCController extends Controller {
   protected $handle_name = "MDC";
   protected $handle_name_plural = "MDC";
 
+
+ 
+  
+
   public function index() {
     $all_count = Table::count();
     $trashed_count = Table::onlyTrashed()->count();

@@ -9,12 +9,12 @@ $currentRoute = Request::route()->getName(); // Adjust this based on how you sto
     align-items: center;
   }
 
-  #navlogorusa{
+  #navlogorusa {
     display: flex;
   }
-  
-  #navlogo{
-    margin-right:20px;
+
+  #navlogo {
+    margin-right: 20px;
   }
 </style>
 <div class="container">
@@ -26,8 +26,7 @@ $currentRoute = Request::route()->getName(); // Adjust this based on how you sto
             <div id="navlogo" class="mr-3"><img class="img-fluid logo-img" src="{{ asset('backend/assets/images/emblem.svg') }}" alt="Logo" /></div>
             <div class="mt-3"><span class="ms-2 navbar-brand-title"><h1 style="margin: 0;"><b>RUSA PORTAL TRACKER</b></h1></span></div>
           </div>
-
-        </a>  
+        </a>
       </div>
     </div>
   </div>
@@ -50,18 +49,22 @@ $currentRoute = Request::route()->getName(); // Adjust this based on how you sto
                 $menuRole = $menu_item['role'] ?? null;
                 $menuDropdown = $menu_item['dropdown'] ?? false;
                 $menuDropdownItems = $menu_item['dropdown_items'] ?? [];
+
                 if ($currentRoute == $menuRoute) {
                   $link_active = "active";
                 }
                 $params = isset($menuRole) ? ['role' => $menuRole] : [];
                 ?>
                 @if (!$menuDropdown && (!$menuRole || $currentRole == $menuRole))
+
                 <li class="nav-item">
                   <a class="nav-link {{ $link_active }}" aria-current="page" href="{{ route($menuRoute, $params) }}">{{ $menu_item['name'] }}</a>
                 </li>
+
                 @elseif ($menuDropdown && (!$menuRole || $currentRole == $menuRole))
                 @php
                 $expanded = '';
+
                 foreach ($menuDropdownItems as $submenu) {
                 if (
                 (isset($menuRole) && $currentRole == $menuRole) ||
@@ -113,4 +116,4 @@ $currentRoute = Request::route()->getName(); // Adjust this based on how you sto
       </div>
     </div>
   </div>
-</div>	
+</div>

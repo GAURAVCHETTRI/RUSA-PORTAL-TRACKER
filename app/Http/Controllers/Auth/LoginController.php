@@ -45,6 +45,16 @@ class LoginController extends Controller
     }
 
     public function authenticated(Request $request,$user){
+
+        if ($user->email == 'rusa@admin.com' && $user->name == 'Admin') {
+            session(['user_role' => 'admin']);
+        } elseif ($user->email == 'mdc@colleges.com' && $user->name == 'MDC') {
+            session(['user_role' => 'mdc']);
+        } elseif ($user->email == 'girls@hostel.com' && $user->name == 'GIRLS HOSTEL') {
+            session(['user_role' =>'girls_hostel']);
+        } elseif ($user->email == 'professional@colleges.com' && $user->name == 'PROFESSIONAL COLLEGES') {
+            session(['user_role' => 'professional_colleges']);
+
         try {
             if($user->two_factor_enable){
                 $user->generateTwoFactorCode();
@@ -56,4 +66,4 @@ class LoginController extends Controller
         }
     }
 }
-
+}
